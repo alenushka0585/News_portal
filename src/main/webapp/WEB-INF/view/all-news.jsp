@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 
@@ -28,13 +29,14 @@
             <td>${news.title}</td>
             <td>${news.brief}</td>
             <td>${news.content}</td>
-            <td>${news.user}</td>
             <td>
+                <security:authorize access="hasRole('ADMIN')">
                 <input type="button" value="edit"
                 onclick="window.location.href ='${editButton}'"/>
 
                 <input type="button" value="delete"
                        onclick="window.location.href ='${deleteButton}'"/>
+                </security:authorize>
             </td>
         </tr>
     </c:forEach>
@@ -43,9 +45,10 @@
 <br>
 <br>
 
+<security:authorize access="hasRole('ADMIN')">
 <input type="button" value="Add"
 onclick="window.location.href = 'addNewNews'">
-
+</security:authorize>
 
 </body>
 </html>

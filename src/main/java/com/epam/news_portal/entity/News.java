@@ -24,11 +24,6 @@ public class News {
     @Column(name = "content")
     private String content;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH,
-            CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name = "user_id")
-    private User user;
-
     public News() {
     }
 
@@ -79,14 +74,6 @@ public class News {
         this.content = content;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     @Override
     public String toString() {
         return "News{" +
@@ -95,7 +82,6 @@ public class News {
                 ", news_date=" + news_date +
                 ", brief='" + brief + '\'' +
                 ", content='" + content + '\'' +
-                ", user=" + user +
                 '}';
     }
 
